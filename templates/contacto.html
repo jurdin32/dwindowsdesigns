@@ -1,0 +1,151 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <section class="wow fadeIn bg-extra-dark-gray padding-35px-tb page-title-small top-space">
+        <div class="container">
+            <div class="row equalize">
+                <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
+                    <div class="display-table-cell vertical-align-middle text-left xs-text-center">
+                        <!-- start page title -->
+                        <h1 class="alt-font text-white font-weight-600 no-margin-bottom text-uppercase">Contact</h1>
+                        <!-- end page title -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end page title section -->
+    <!-- start contact info -->
+    <section class="wow fadeIn">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 center-col margin-eight-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center last-paragraph-no-margin">
+                    <h5 class="alt-font font-weight-700 text-extra-dark-gray text-uppercase">We love to talk</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-4 col-sm-6 col-xs-12 text-center sm-margin-eight-bottom xs-margin-30px-bottom wow fadeInUp last-paragraph-no-margin">
+                        <div class="display-inline-block margin-20px-bottom">
+                            <div class="bg-extra-yellow icon-round-medium"><i
+                                    class="icon-desktop icon-medium text-white"></i></div>
+                        </div>
+                        <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">
+                            Visit Our Office
+                        </div>
+                        <p class="center-col">{{ contact.address }}<br>{{ contact.street }}</p>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12 text-center sm-margin-eight-bottom xs-margin-30px-bottom wow fadeInUp last-paragraph-no-margin"
+                         data-wow-delay="0.2s">
+                        <div class="display-inline-block margin-20px-bottom">
+                            <div class="bg-extra-yellow icon-round-medium"><i
+                                    class="icon-chat icon-medium text-white"></i></div>
+                        </div>
+                        <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">
+                            Let's Talk
+                        </div>
+                        <p class="center-col">Phone: {{ contact.phone }}</p>
+                        <p class="center-col">Phone: (201) 519-9759</p>
+                    </div>
+                    <!-- end contact info item -->
+                    <!-- start contact info item -->
+                    <div class="col-md-4 col-sm-6 col-xs-12 text-center xs-margin-30px-bottom wow fadeInUp last-paragraph-no-margin"
+                         data-wow-delay="0.4s">
+                        <div class="display-inline-block margin-20px-bottom">
+                            <div class="bg-extra-yellow icon-round-medium"><i
+                                    class="icon-envelope icon-medium text-white"></i>
+                            </div>
+                        </div>
+                        <div class="text-extra-dark-gray text-uppercase text-small font-weight-600 alt-font margin-5px-bottom">
+                            E-mail Us
+                        </div>
+                        <p class="center-col"><a href="mailto:info@yourdomain.com">{{ contact.email }}</a><br></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="wow fadeIn no-padding bg-extra-dark-gray">
+        <div class="container-fluid">
+            <div class="row equalize sm-equalize-auto">
+                <div class="col-md-6 cover-background sm-height-450px xs-height-350px wow fadeIn"
+                     style="background: url('/static/images/1.jpg')"></div>
+                <div class="col-md-6 wow fadeIn">
+                    <div class="padding-eleven-all text-center xs-no-padding-lr">
+                        <h5 class="margin-55px-bottom text-white alt-font font-weight-700 text-uppercase xs-margin-ten-bottom">
+                            Ready to request a quote?</h5>
+
+
+                        <form method="POST" >
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <input type="text" name="name" id="name" placeholder="Enter your name *"
+                                           class="bg-transparent border-color-medium-dark-gray medium-input">
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <input type="text" name="last_name" id="last_name" placeholder="Enter your Last Name *"
+                                           class="bg-transparent border-color-medium-dark-gray medium-input">
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <input type="text" name="phone" id="phone" placeholder="Enter your Phone"
+                                           class="bg-transparent border-color-medium-dark-gray medium-input">
+                                </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <input type="text" name="email" id="email" placeholder="Enter your E-mail *"
+                                           class="bg-transparent border-color-medium-dark-gray medium-input">
+                                </div>
+                                <div class="col-md-12 sm-clear-both">
+                                    <textarea name="comment" id="comment" placeholder="Would you like some kind of work? Tell us...." rows="6"
+                                              class="bg-transparent border-color-medium-dark-gray medium-textarea"></textarea>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                    <button type="submit" class="btn btn-deep-yellow btn-medium margin-20px-top"> send_mail </button>
+                                </div>
+                                <div class="row"></div>
+                            </div>
+
+                        </form>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end contact form -->
+
+    <!-- start map section -->
+    <section class="wow fadeIn no-padding-bottom">
+        <div class="row">
+            <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-100px-bottom xs-margin-40px-bottom">
+                <div class="position-relative overflow-hidden width-100">
+                    <span class="text-small text-outside-line-full alt-font font-weight-600 text-uppercase">Location</span>
+                </div>
+            </div>
+        </div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.2818753090487!2d-74.04982648428374!3d40.887631334788495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2fa1bc57d6a85%3A0x76194d42e43e4781!2sHackensack%2C+Nueva+Jersey+07601%2C+EE.+UU.!5e0!3m2!1ses-419!2sec!4v1539986005150" width="2000" height="600" frameborder="0" style="border:0"
+                allowfullscreen></iframe>
+    </section>
+    <!-- end map section -->
+
+    <!-- start social section -->
+    <section class="wow fadeIn">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center social-style-1 round social-icon-style-5">
+                    <ul class="large-icon no-margin-bottom">
+                        {% for sociales in rsociales %}
+                            <li><a href="{{ sociales.url }}" target="_blank"><i
+                                    class="{{ sociales.icono }}"></i><span></span></a>
+                            </li>
+                        {% endfor %}
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end social section -->
+{% endblock %}

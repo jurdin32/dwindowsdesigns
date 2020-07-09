@@ -1,0 +1,82 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+        {% for product in product %}
+            <section class="wow fadeIn cover-background background-position-top top-space" style="background-image:url('/static/images/paradax.png');">
+                <div class="opacity-medium bg-extra-dark-gray"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 display-table page-title-large">
+                            <div class="display-table-cell vertical-align-middle text-center">
+                                <h1 class="alt-font text-white font-weight-600 no-margin-bottom">{{ product.categoria }}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <br><br>
+            <section class="no-padding wow fadeIn bg-extra" style="visibility: visible; animation-name: fadeIn;">
+                <div class="container-fluid">
+                    <div class="row equalize sm-equalize-auto">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 cover-background sm-height-500px xs-height-350px wow fadeInLeft" style="background-image: url('/media/{{ product.portada }}'); visibility: visible; animation-name: fadeInLeft;"><div class="hidden-sm height-350px"></div></div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+                            <div class="padding-twelve-all md-padding-ten-all pull-left sm-no-padding-lr xs-padding-50px-tb">
+                                    <h5 class="alt-font text-extra-dark-gray font-weight-600">{{ product.nombre }}</h5>
+                                    <p class="center-col display-inline-block">{{ product.descripcion }} </p>
+                                <a href="{% url 'portafolio' %}" class="btn btn-dark-gray btn-small text-extra-small border-radius-4 margin-20px-top"><i class="fas fa-play-circle icon-very-small margin-5px-right no-margin-left" aria-hidden="true"></i> View Portfolio</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        <br><br>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 no-padding xs-padding-15px-lr">
+                    <div class="filter-content overflow-hidden">
+                        <ul class="portfolio-grid work-3col gutter-medium">
+                            {% for galery in galerias %}
+                                {% if galery.producto == product %}
+                                    <li>
+                                        <a>
+                                            <figure>
+                                                <div class="portfolio-img bg-extra-dark-gray"><img
+                                                        src="/media/{{ galery.foto }}"  style="width: 700px;" height="450px">
+                                                </div>
+                                            </figure>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <br><br>
+
+        <h6 style="text-align: center" class="font-weight-400 text-extra-dark-gray alt-font">Brands with which we work</h6>
+        <section id="clients" class="parallax wow fadeIn" data-stellar-background-ratio="0.4"
+                 style="background-image: url('/static/images/paradax.png'); visibility: visible; animation-name: fadeIn;">
+            <div class="opacity-medium bg-extra-dark"></div>
+            <div class="container text-center">
+                <div class="row">
+                    <div class="swiper-slider-clients swiper-container white-move swiper-container-horizontal">
+                        <div class="swiper-wrapper"
+                             style="transform: translate3d(-916px, 0px, 0px); transition-duration: 0ms;">
+                            {% for proveedor in proveedores %}
+                                <div class="swiper-slide text-center" style="width: 458px;">
+                                    <a href="{{ proveedor.url }}"><img src="/media/{{ proveedor.logo }}" alt="" data-no-retina="" width="50%"></a>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+{% endblock %}

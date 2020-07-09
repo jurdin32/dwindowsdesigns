@@ -1,0 +1,105 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <section class="wow fadeIn bg-extra-dark-gray padding-35px-tb page-title-small top-space">
+        <div class="container">
+            <div class="row equalize">
+                <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
+                    <div class="display-table-cell vertical-align-middle text-left xs-text-center">
+                        <!-- start page title -->
+                        <h1 class="alt-font text-white font-weight-600 no-margin-bottom text-uppercase">Portafolio</h1>
+                        <!-- end page title -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- end page title section -->
+    <!-- start portfolio section -->
+    <section class="wow fadeIn padding-90px-top bg-light-gray sm-padding-50px-top xs-padding-30px-top">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- start filter navigation -->
+                    <ul class="portfolio-filter nav nav-tabs border-none portfolio-filter-tab-1 font-weight-600 alt-font text-uppercase text-center margin-80px-bottom text-small sm-margin-40px-bottom xs-margin-20px-bottom">
+                        <li class="nav active"><a href="javascript:void(0);" data-filter="*" class="xs-display-inline light-gray-text-link text-very-small">All</a></li>
+                        {% for category in categoria %}
+                            <li class="nav"><a href="javascript:void(0);" data-filter=".{{ category.nombre }}" class="xs-display-inline light-gray-text-link text-very-small">{{ category.nombre }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12 no-padding xs-padding-15px-lr">
+                    <div class="filter-content overflow-hidden">
+                        <ul class="portfolio-grid work-4col gutter-medium hover-option6 lightbox-portfolio">
+                            <li class="grid-sizer"></li>
+                            {% for imagene in imagenes %}
+                                <li class="{{ imagene.category }} grid-item wow fadeInUp last-paragraph-no-margin">
+                                    <figure>
+                                        <div class="portfolio-img bg-deep-yellow position-relative text-center overflow-hidden" style="width: 500px ; height: 350px">
+                                            <img  src="/media/{{ imagene.imagen }}" alt=""/>
+                                            <div class="portfolio-icon">
+                                                <a href="/portafolio/foto/{{ imagene.id }}"><i
+                                                        class="fas fa-link text-extra-dark-gray" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                        <figcaption class="bg-white">
+                                            <div class="portfolio-hover-main text-center">
+                                                <div class="portfolio-hover-box vertical-align-middle">
+                                                    <div class="portfolio-hover-content position-relative">
+                                                        <a href="single-project-page-01.html"><span
+                                                                class="line-height-normal font-weight-600 text-small alt-font margin-5px-bottom text-extra-dark-gray text-uppercase display-block">{{ imagene.titulo }}</span></a>
+                                                        <p class="text-medium-gray text-extra-small text-uppercase">{{ imagene.descripcion |truncatechars:"200"  }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+
+                                </li>
+                            {% endfor %}
+                            <!-- end portfolio item -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end filter content -->
+    </section>
+    <!-- end portfolio section -->
+
+    <section class="wow fadeIn bg-extra-dark-gray padding-35px-tb page-title-small top-space">
+        <!-- start video style 01 section -->
+        <section class="wow fadeIn">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-7 col-sm-12 col-xs-12 center-col text-center margin-100px-bottom xs-margin-40px-bottom">
+                        <div class="position-relative overflow-hidden width-100">
+                            <span class="text-small text-outside-line-full alt-font font-weight-600 text-uppercase">Proyectos Realizados</span>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="row">
+                         {% for video in videos %}
+                            <div class="col-md-6 col-sm-12 col-xs-12 fit-videos text-center sm-margin-30px-bottom padding-10px-top">
+                                <video width="560" height="315" src="/media/{{ video.rutaVideo }}" type="video/mp4" controls></video>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+
+            </div>
+        </section>
+    </section>
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script>
+
+        $("video").removeAttr('autoplay');
+
+    </script>
+
+{% endblock %}

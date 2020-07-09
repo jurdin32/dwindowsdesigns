@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+
+    <section class="wow fadeIn no-padding bg-light-gray top-space">
+
+        <div class="container-fluid">
+        <div class="row equalize sm-equalize-auto">
+            <div class="col-md-8 col-sm-12 col-xs-12 no-padding cover-background sm-height-500px xs-height-300px"
+                 style="background:url('/media/{{ projet_view.imagen }}')"></div>
+            <div class="col-md-4 col-sm-12 col-xs-12 no-padding">
+                <div class="padding-seventeen-lr padding-twenty-tb md-padding-40px-lr sm-padding-50px-tb xs-padding-30px-all">
+                    <h3 class="alt-font text-extra-dark-gray font-weight-300 no-margin-bottom">{{ projet_view.titulo }}</h3>
+                    <div class="bg-deep-yellow separator-line-horrizontal-full display-inline-block margin-25px-tb"></div>
+                    <p class="width-90 width-100 margin-35px-bottom text-medium line-height-28">{{ projet_view.descripcion }}</p>
+
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <!-- start product image section -->
+        <section class="wow fadeIn no-padding" style="visibility: visible; animation-name: fadeIn;">
+            <h3 style="text-align: center" class="alt-font text-extra-dark-gray font-weight-200 no-margin-bottom">Project Gallery</h3>
+            <br>
+            <div class="container-fluid no-padding">
+                <div class="row no-margin">
+                    {% for galery in galery_proyect %}
+                        <div class="col-md-6 no-padding wow fadeInUp"
+                             style="visibility: visible; animation-name: fadeInUp;">
+                            <img src="/media/{{ galery.photo }}" class="width-100" alt="" data-no-retina="">
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </section>
+        <!-- end product image section -->
+    </div>
+</section>
+
+    <li class="grid-item web branding design fadeInUp" style="visibility: visible; animation-name: fadeInUp; position: absolute; left: 0%; top: 0px;">
+    <figure>
+        <figcaption>
+            <div class="portfolio-hover-main text-center">
+                <div class="portfolio-hover-box vertical-align-middle">
+                    <div class="portfolio-hover-content position-relative">
+                        <i class="ti-zoom-in text-white fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+        </figcaption>
+    </figure>
+</a>
+</li>
+
+
+</section>
+
+{% endblock %}

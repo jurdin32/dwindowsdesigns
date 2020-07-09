@@ -1,0 +1,71 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+
+<section class="wow fadeIn bg-extra-dark-gray padding-35px-tb page-title-small top-space">
+        <div class="container">
+            <div class="row equalize">
+                <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
+                    <div class="display-table-cell vertical-align-middle text-left xs-text-center">
+                        <!-- start page title -->
+                        <h1 class="alt-font text-white font-weight-600 no-margin-bottom text-uppercase">Services</h1>
+                        <!-- end page title -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- end page title section -->
+<!-- start blog content section -->
+<section>
+    <div class="container">
+        <div class="row">
+
+
+            <main class="col-md-12 col-sm-12 col-xs-12 right-sidebar sm-margin-60px-bottom xs-margin-40px-bottom sm-padding-15px-lr">
+                <!-- start post item -->
+                {% for service in services %}
+                    <div class="equalize sm-equalize-auto blog-post-content margin-60px-bottom padding-60px-bottom display-inline-block border-bottom border-color-extra-light-gray sm-margin-30px-bottom sm-padding-30px-bottom xs-text-center sm-no-border">
+                    <div class="blog-image col-md-5 no-padding sm-margin-30px-bottom xs-margin-20px-bottom margin-45px-right sm-no-margin-right display-table">
+                        <div class="display-table-cell vertical-align-middle">
+                            <a><img src="/media/{{ service.image }}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="blog-text col-md-6 display-table no-padding">
+                        <div class="display-table-cell vertical-align-middle">
+                            <div class="content margin-20px-bottom sm-no-padding-left ">
+                                <a class="text-extra-dark-gray margin-5px-bottom alt-font text-extra-large font-weight-600 display-inline-block">{{ service.title }}</a>
+                                <p class="no-margin width-95">{{ service.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+                <div class="col-md-12 col-sm-12 col-xs-12 text-center margin-100px-top sm-margin-50px-top wow fadeInUp">
+                        <div class="pagination pagination-centered">
+                            <ul class="blue">
+                                {% if services.has_previous %}
+                                    <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+                                    <li class="page-item"><a class="page-link" href="?page={{ services.previous_page_number }}">Previous</a></li>
+                                {% endif %}
+
+                                {% if services.has_next %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ services.next_page_number }}">Next</a></li>
+                                    <li class="page-item"><a class="page-link" href="?page={{ services.paginator.num_pages }}">Last &raquo;</a></li>
+                                {% endif %}
+                                <a>Page {{ services.number }} of {{ services.paginator.num_pages }}.</a>
+                            </ul>
+                        </div>
+                    </div>
+                <!-- end pagination -->
+            </main>
+
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

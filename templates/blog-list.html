@@ -1,0 +1,136 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load contador %}
+{% block content %}
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <main class="col-md-9 col-sm-12 col-xs-12 right-sidebar sm-margin-60px-bottom xs-margin-40px-bottom no-padding-left sm-no-padding-right">
+                    {% for blogg in blog_pag %}
+                        <div class="col-md-12 col-sm-12 col-xs-12 blog-post-content margin-60px-bottom xs-margin-30px-bottom xs-text-center">
+                            <div class="blog-image"><a href="/blog/post/{{ blogg.id }}"><img src="/media/{{ blogg.image }}" alt=""/></a></div>
+                            <div class="blog-text border-all display-inline-block width-100">
+                                <div class="equalize xs-equalize-auto author border-top border-color-extra-light-gray display-table width-100">
+
+                                    <div class="name col-md-3 col-sm-4 padding-15px-all">
+                                        <div class="display-table text-center width-100 height-100">
+                                            <div class="display-table-cell vertical-align-middle">
+                                                <a class="text-extra-small alt-font text-medium-gray text-uppercase margin-lr-auto display-table"><i
+                                                        class="far fa-user margin-5px-right text-small"></i>{{ blogg.author }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="name col-md-3 col-sm-4 border-lr padding-15px-all border-color-extra-light-gray xs-no-border">
+                                        <div class="display-table text-center  width-100 height-100">
+                                            <div class="display-table-cell vertical-align-middle">
+                                                <a class="text-extra-small alt-font text-medium-gray text-uppercase margin-lr-auto display-table"><i
+                                                        class="far fa-calendar margin-5px-right text-small"></i>{{ blogg.date }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="name col-md-3 col-sm-4 border-lr padding-15px-all border-color-extra-light-gray xs-no-border">
+                                        <div class="display-table text-center width-100 height-100">
+                                            <div class="display-table-cell vertical-align-middle">
+                                                <a class="text-extra-small alt-font text-medium-gray text-uppercase margin-lr-auto display-table"><i
+                                                        class="far fa-star margin-5px-right text-small"></i>{{ blogg.category }}
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="name col-md-3 col-sm-4 padding-15px-all">
+                                        <div class="display-table text-center width-100 height-100">
+                                            <div class="display-table-cell vertical-align-middle">
+                                                <a class="text-extra-small alt-font text-medium-gray text-uppercase margin-lr-auto display-table"><i
+                                                        class="far fa-eye margin-5px-right text-small"></i>Visitas
+                                                    :{% vistanumero blogg.id %}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="content padding-40px-all xs-padding-20px-all">
+                                    <a href="/blog/post/{{ blogg.id }}"
+                                       class="text-extra-dark-gray text-uppercase  alt-font text-large font-weight-600 margin-15px-bottom display-block">{{ blogg.title }}</a>
+                                    <p class="no-margin">{{ blogg.article|truncatechars:"200" }}</p>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    {% endfor %}
+
+
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center margin-100px-top sm-margin-50px-top wow fadeInUp">
+                        <div class="pagination pagination-centered">
+                            <ul class="blue">
+                                {% if blog_pag.has_previous %}
+                                    <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+                                    <li class="page-item"><a class="page-link" href="?page={{ blog_pag.previous_page_number }}">Previous</a></li>
+                                {% endif %}
+
+                                {% if blog_pag.has_next %}
+                                    <li class="page-item"><a class="page-link" href="?page={{ blog_pag.next_page_number }}">Next</a></li>
+                                    <li class="page-item"><a class="page-link" href="?page={{ blog_pag.paginator.num_pages }}">Last &raquo;</a></li>
+                                {% endif %}
+                                <a>Page {{ blog_pag.number }} of {{ blog_pag.paginator.num_pages }}.</a>
+                            </ul>
+                        </div>
+                    </div>
+
+                </main>
+                <aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
+
+                    <div class="margin-45px-bottom xs-margin-25px-bottom">
+                        <div class="text-extra-dark-gray margin-20px-bottom alt-font text-uppercase font-weight-600 text-small aside-title">
+                            <span>Categories</span></div>
+                        <ul class="list-style-6 margin-50px-bottom text-small">
+                            {% for cat in category %}
+                                <li><a href="/blog/{{ cat.id }}/">{{ cat.category }}</a><span></span></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="bg-deep-yellow padding-30px-all text-white text-center margin-45px-bottom xs-margin-25px-bottom">
+                        <i class="fas fa-quote-left icon-small margin-15px-bottom display-block"></i>
+                        <span class="text-extra-large font-weight-300 margin-20px-bottom display-block">The future belongs to those who believe in the beauty of their dreams.</span>
+                        <a class="btn btn-very-small btn-transparent-white border-width-1 text-uppercase"
+                           href="{% url 'portafolio' %}">Explore Portfolio</a>
+                    </div>
+                    <div class="margin-45px-bottom xs-margin-25px-bottom">
+                        <div class="text-extra-dark-gray margin-25px-bottom alt-font text-uppercase font-weight-600 text-small aside-title">
+                            <span>Popular post</span></div>
+                        <ul class="latest-post position-relative">
+                            {% for bloggs in blog_pag %}
+                                <li>
+                                    <figure>
+                                        <a href="/blog/0/"><img src="/media/{{ bloggs.image }}" alt=""></a>
+                                    </figure>
+                                    <div class="display-table-cell vertical-align-top text-small"><a
+                                            href="/blog/0/" class="text-extra-dark-gray"><span
+                                            class="display-inline-block margin-5px-bottom">{{ bloggs.article|truncatechars:'50' }}</span></a>
+                                        <span class="clearfix text-medium-gray text-small">{{ bloggs.date }}</span>
+                                    </div>
+                                </li>
+
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+
+                    <div>
+                        <div class="text-extra-dark-gray margin-25px-bottom alt-font text-uppercase font-weight-600 text-small aside-title">
+                            <span>Instagram</span></div>
+                        <div class="instagram-follow-api">
+                            <ul id="instaFeed-aside"></ul>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

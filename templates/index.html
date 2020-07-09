@@ -1,0 +1,532 @@
+<!doctype html>
+{% load static %}
+{% load contador %}
+<html class="no-js">
+<head lang="{{ LANGUAGE_CODE }}">
+    <!-- title -->
+
+    <title>dwindowsdesigns</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1"/>
+    <meta name="author" content="BIT">
+    <!-- description -->
+    <meta name="description"
+          content="Dolores windows is a business created for home interior designs, with a product range from windows curtains, sheers, backrests, pillowcases, tie backs, roman shades and accesories..">
+    <!-- keywords -->
+    <meta name="keywords"
+          content="windows curtains, sheers, backrests, pillowcases, tie backs, roman shades and accesories.">
+    <!-- favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+    <link rel="apple-touch-icon" href="{% static 'images/apple-touch-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'images/apple-touch-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'images/apple-touch-icon-114x114.png' %}">
+    <!-- animation -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}"/>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <!-- et line icon -->
+    <link rel="stylesheet" href="{% static 'css/et-line-icons.css' %}"/>
+    <!-- font-awesome icon -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}"/>
+    <!-- themify icon -->
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <!-- swiper carousel -->
+    <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+    <!-- justified gallery -->
+    <link rel="stylesheet" href="{% static 'css/justified-gallery.min.css' %}">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}"/>
+    <!-- revolution slider -->
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/settings.css' %}" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/layers.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'revolution/css/navigation.css' %}">
+    <!-- bootsnav -->
+    <link rel="stylesheet" href="{% static 'css/bootsnav.css' %}">
+    <!-- style -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <!-- responsive css -->
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}"/>
+    <!--[if IE]>
+            <script src="js/html5shiv.js"></script>
+        <![endif]-->
+</head>
+<body>
+<!-- start header -->
+{% block header %}
+    <header>
+        <!-- start navigation -->
+        <nav style="height: 100px" class=" navbar navbar-default bootsnav bg-white nav-box-width navbar-top">
+
+            <div class="container nav-header-container">
+
+                <div class="row">
+                    <!-- start logo -->
+                    <div style="padding-top: 5px" class="col-md-3 col-xs-6">
+                        <a href="{% url 'index' %}" title="DwindowsDesigns" class="logo">
+                            <img  src="/media/{{ logo.logo }}" data-rjs="images/logo@2x.png"
+                                 class="logo-dark default" alt="DwindowsDesigns">
+                            <img src="{% static 'images/logo-white.png' %}" data-rjs="images/logo-white@2x.png"
+                                 alt="Pofo" class="logo-light"></a>
+                    </div>
+                    <!-- end logo -->
+                    <div class="col-md-7 col-xs-2 width-auto pull-right accordion-menu xs-no-padding-right">
+                        <button type="button" class="navbar-toggle collapsed pull-right" data-toggle="collapse"
+                                data-target="#navbar-collapse-toggle-1">
+                            <span class="sr-only">toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="navbar-collapse collapse pull-right" id="navbar-collapse-toggle-1">
+                            <ul id="accordion" class="nav navbar-nav navbar-left no-margin alt-font text-normal"
+                                data-in="fadeIn" data-out="fadeOut">
+                                <!-- start menu item -->
+                                <li class="dropdown megamenu-fw">
+                                    <a href="{% url 'index' %}">Home</a></a><i class="fas fa-angle-down dropdown-toggle"
+                                                                               aria-hidden="true"></i>
+                                </li>
+                                <li class="dropdown megamenu-fw">
+                                    <a href="{% url 'acercade' %}">Company</a><i
+                                        class="fas fa-angle-down dropdown-toggle" aria-hidden="true"></i>
+                                </li>
+                                <li class="dropdown megamenu-fw">
+                                    <a href="{% url 'portafolio' %}">Portfolio</a><i
+                                        class="fas fa-angle-down dropdown-toggle" aria-hidden="true"></i>
+                                </li>
+
+                                <li class="dropdown simple-dropdown">
+                                    <a>Products</a><i class="fas fa-angle-down" data-toggle="dropdown"
+                                                      aria-hidden="true"></i>
+                                    <ul style="margin-top: -20px" class="dropdown-menu text-black" role="menu">
+                                        {% for cat in categoria %}
+                                            <li class="menu-center"><a data-toggle="dropdown"
+                                                                       href="/producto/foto/{{ cat.id }}">{{ cat.nombre }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+
+                                <li class="dropdown megamenu-fw">
+                                    <a href="/blog/0/">Blog</a></a><i
+                                        class="fas fa-angle-down dropdown-toggle" aria-hidden="true"></i>
+                                </li>
+
+                                <li class="dropdown megamenu-fw">
+                                    <a href="{% url 'services' %}">Services</a><i
+                                        class="fas fa-angle-down dropdown-toggle" aria-hidden="true"></i>
+                                </li>
+                                <li class="dropdown megamenu-fw">
+                                    <a href="{% url 'contacto' %}">Contact</a><i
+                                        class="fas fa-angle-down dropdown-toggle" aria-hidden="true"></i>
+                                </li>
+
+                                <li style="width:15px;padding-top: 20px;margin-left: 20px"><div id="google_translate_element"></div></li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- end navigation -->
+        <!-- start push menu -->
+        <div class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2">
+            <button class="close-button-menu side-menu-close" id="close-pushmenu"></button>
+            <div class="display-table padding-twelve-all height-100 width-100 text-center">
+                <div class="display-table-cell vertical-align-top padding-70px-top position-relative">
+                    <div class="row">
+                        <!-- start push menu logo -->
+                        <div class="col-lg-12 margin-70px-bottom">
+                            <img src="{% static 'images/logo-black-big.png' %}" alt=""/>
+                        </div>
+                        <!-- end push menu logo -->
+                        <div class="col-lg-12">
+                            <h5 class="alt-font text-extra-dark-gray">
+                                <span class="display-block font-weight-300 text-dark-gray">The world's most</span>
+                                <strong>powerful website builder.</strong>
+                            </h5>
+                        </div>
+                        <div class="col-lg-12">
+                            <a href="https://themeforest.net/item/pofo-creative-agency-corporate-and-portfolio-multipurpose-template/20645944?ref=themezaa"
+                               target="_blank" class="btn btn-deep-pink btn-small text-extra-small border-radius-4">
+                                <i class="fas fa-play-circle icon-very-small margin-5px-right no-margin-left" aria-hidden="true"></i>
+                                Purchase Now
+                            </a>
+                        </div>
+                        <!-- start social links -->
+                        <div class="col-md-12 margin-100px-top text-center">
+                            <div class="icon-social-medium margin-three-bottom">
+                                <a href="https://www.facebook.com/" target="_blank" class="text-extra-dark-gray text-deep-pink-hover margin-one-lr">
+                                   <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://twitter.com/" target="_blank" class="text-extra-dark-gray text-deep-pink-hover margin-one-lr">
+                                   <i class="fab fa-twitter" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://dribbble.com/" target="_blank" class="text-extra-dark-gray text-deep-pink-hover margin-one-lr">
+                                   <i class="fab fa-dribbble" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://plus.google.com" target="_blank" class="text-extra-dark-gray text-deep-pink-hover margin-one-lr">
+                                   <i class="fab fa-google-plus-g" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://www.tumblr.com" target="_blank" class="text-extra-dark-gray text-deep-pink-hover margin-one-lr">
+                                   <i class="fab fa-tumblr" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- end social links -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- end push menu -->
+
+    </header>
+{% endblock %}
+
+<!-- end header -->
+{% block content %}
+    <!-- start slider section -->
+    <section class="no-padding main-slider height-70 mobile-height wow fadeIn ">
+        <div class="swiper-full-screen swiper-container height-100 width-100 black-move">
+            <div class="swiper-wrapper">
+                <!-- start slider item dinámico -->
+                {% for slider in sliders %}
+                    <div  class="swiper-slide cover-background" style="background-image:url('media/{{ slider.imagen }}'); width: 1000px;height: 700px"></div>
+                {% endfor %}
+                <!-- end slider item -->
+            </div>
+            <!-- start slider pagination -->
+            <div class="swiper-pagination swiper-full-screen-pagination"></div>
+            <div class="swiper-button-next swiper-button-black-highlight display-none"></div>
+            <div class="swiper-button-prev swiper-button-black-highlight display-none"></div>
+            <!-- end slider pagination -->
+        </div>
+    </section>
+    <!-- end slider section -->
+
+
+    <!-- start full width feature box -->
+    <section class="no-padding wow fadeIn border-color-extra-light-gray border-bottom">
+        <div class="container-fluid no-padding">
+            <div class="row equalize no-margin feature-box-14">
+                {% for box in boxs %}
+                    <div class="col-md-4 col-sm-6 col-xs-12 text-center border-right border-color-extra-light-gray display-table border-bottom wow fadeInUp last-paragraph-no-margin">
+                        <div class="display-table-cell vertical-align-middle padding-fifteen-all xs-padding-30px-tb xs-no-padding-lr">
+                            <i class="fa fa-check-square icon-large text-deep-yellow"></i>
+                            <span class="display-block alt-font font-weight-600 text-extra-dark-gray margin-25px-top margin-5px-bottom sm-margin-15px-top">{{ box.titulo }}</span>
+                            <p>{{ box.parrafo }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- end full width feature box -->
+
+    <!-- start feature section -->
+    <section class="no-padding wow fadeIn bg-light-gray">
+        <div class="container-fluid">
+            {% for feature in features %}
+                <div class="row equalize sm-equalize-auto">
+                    <div class=" col-lg-6 col-md-6 col-sm-12 col-xs-12 cover-background wow fadeInLeft sm-height-450px"
+                         style="background-image:url('/media/{{ feature.imagen }}');width: 750px;height: 300px "></div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 wow fadeInRight no-padding-lr sm-padding-15px-lr">
+                        <div class="padding-ten-all md-padding-ten-all pull-left sm-no-padding-lr xs-padding-50px-tb">
+                            <div class="col-lg-11 col-md-12 col-sm-12 col-xs-12 margin-five-bottom md-margin-six-bottom sm-margin-40px-bottom xs-margin-30px-bottom xs-no-padding-lr">
+                                <h4 style="text-align: center"
+                                    class="alt-font text-extra-dark-gray font-weight-300 sm-text-center sm-width-70 sm-margin-lr-auto sm-no-margin-bottom xs-width-100">{{ feature.titulo }}</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- end feature section -->
+
+    <!-- start recent work section -->
+    <section class="bg-light-gray wow fadeIn">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 center-col margin-eight-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center">
+                    <div class="alt-font text-medium-gray margin-5px-bottom text-uppercase text-small">OUR RECENT WORKS
+                    </div>
+                    <h5 class="alt-font text-extra-dark-gray font-weight-300">Impressive projects for our clients</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 no-padding xs-padding-15px-lr">
+                    <div class="filter-content overflow-hidden">
+                        <ul class="portfolio-grid work-3col gutter-large hover-option6 lightbox-portfolio">
+                            <li class="grid-sizer"></li>
+                            <!-- start portfolio item -->
+                            {% for work in projects %}
+                                <li class="grid-item wow zoomIn last-paragraph-no-margin">
+                                    <figure>
+                                        <div class="portfolio-img bg-deep-yellow  position-relative text-center overflow-hidden"style="width: 400px ; height: 255px">
+                                            <img src="media/{{ work.imagen }}"
+                                                 style="border-top-left-radius:5px;border-top-right-radius:5px;"/>
+                                            <div class="portfolio-icon">
+                                                <a href="/portafolio/foto/{{ work.id }}"><i
+                                                        class="fas fa-link text-extra-dark-gray" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
+                                        <figcaption class="bg-white">
+                                            <div class="portfolio-hover-main text-center">
+                                                <div class="portfolio-hover-box vertical-align-middle">
+                                                    <div class="portfolio-hover-content position-relative">
+                                                        <a href="1"><span
+                                                                class="line-height-normal font-weight-600 text-small alt-font margin-5px-bottom text-extra-dark-gray text-uppercase display-block">{{ work.titulo }}</span></a>
+                                                        <p style="text-align: justify"
+                                                           class="text-medium-gray text-extra-small ">{{ work.descripcion |truncatechars:"100"  }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </figcaption>
+                                    </figure>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end recent work section -->
+    <!-- start blog section -->
+    <section class="wow fadeIn hover-option4 blog-post-style3 count-number">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 center-col margin-eight-bottom sm-margin-40px-bottom xs-margin-30px-bottom text-center">
+                    <div class="alt-font text-medium-gray margin-5px-bottom text-uppercase text-small">
+                    </div>
+                    <h5 class="alt-font text-extra-dark-gray font-weight-300">Latest Blogs</h5>
+                </div>
+            </div>
+            <div class="row equalize xs-equalize-auto">
+                <!-- start blog post item -->
+                {% for blog in blogs %}
+                    <div class="grid-item col-md-4 col-sm-6 col-xs-12 wow fadeInUp sm-padding-30px-bottom xs-text-center">
+                        <div class="blog-post bg-light-gray inner-match-height">
+                            <div class="blog-post-images overflow-hidden position-relative" style="width: 360px ; height: 255px">
+                                <a href="/blog/post/{{ blog.id }}/">
+                                    <img src="media/{{ blog.image }}" alt=""
+                                         style="border-top-left-radius:5px;border-top-right-radius:5px;">
+                                    <div class="blog-hover-icon"><span class="text-extra-large font-weight-300">»</span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="post-details padding-40px-all sm-padding-20px-all">
+                                <a href="{{ blog.image.id }}"
+                                   class="alt-font post-title text-medium text-extra-dark-gray width-100 display-block md-width-100 margin-15px-bottom">{{ blog.title }}</a>
+                                <p style="text-align: justify">{{ blog.article |truncatechars:"70" }}</p>
+                                <div class="separator-line-horrizontal-full bg-medium-gray margin-20px-tb sm-margin-15px-tb"></div>
+                                <div class="author">
+                                        <span class="text-medium-gray text-uppercase text-small display-inline-block sm-display-block sm-margin-10px-top"><a
+                                        class="text-medium-gray far fa-calendar "></a>&nbsp; &nbsp;&nbsp;{{ blog.date }}&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;&nbsp;<i
+                                        style="color: #f2890a" class="fa fa-eye"></i> {% vistanumero blog.id %}</span>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                {% endfor %}
+            <br>
+            </div>
+        <br>
+        </div>
+    </section>
+    <!-- start map section -->
+    <section class="wow fadeIn no-padding-bottom">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 center-col text-center margin-100px-bottom xs-margin-40px-bottom">
+                <div class="position-relative overflow-hidden width-100">
+                    <span class="text-small text-outside-line-full alt-font font-weight-600 text-uppercase">Location</span>
+                </div>
+            </div>
+        </div>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3016.2818753090487!2d-74.04982648428374!3d40.887631334788495!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2fa1bc57d6a85%3A0x76194d42e43e4781!2sHackensack%2C+Nueva+Jersey+07601%2C+EE.+UU.!5e0!3m2!1ses-419!2sec!4v1539986005150" width="2000" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </section>
+    <!-- end map section -->
+{% endblock %}
+<!-- start footer -->
+{% block footer %}
+    <footer class="footer-standard-dark bg-extra-dark-gray">
+        <div class="footer-widget-area padding-five-tb xs-padding-30px-tb">
+            <div class="container">
+                <div class="row equalize xs-equalize-auto">
+                    <div class="col-md-3 col-sm-6 col-xs-12 widget border-right border-color-medium-dark-gray sm-no-border-right sm-margin-30px-bottom xs-text-center">
+                        <!-- start logo -->
+                        {% for footer in footers %}
+                            <a href="{% url 'index' %}" class="margin-20px-bottom display-inline-block">
+                                <img class="footer-logo" src="/media/{{ footer.logo }}"
+                                     data-rjs="images/logo-white@2x.png" alt="Dwindowsdesigns">
+                            </a>
+                            <!-- end logo -->
+                            <p class="text-small width-95 xs-width-100">
+                                {{ footer.descripcion }}
+                            </p>
+                        {% endfor %}
+                        <div class=" text-center social-style-1 round social-icon-style-5 display-inline-block vertical-align-middle">
+                            <ul class="small-icon no-margin-bottom">
+                                {% for rsociale in rsociales %}
+                                    <li class="text-white">
+                                        <a style="color: white" class="text-white" href="{{ rsociale.url }}" target="_blank">
+                                            <i class="{{ rsociale.icono }}" aria-hidden="true"></i>
+                                        </a>
+                                        <a style="color: white" href="https://www.facebook.com"><i class="icon icon-facebook" ></i></a>
+                                        <a style="color: white" href="https://www.instagram.com"><i class="fa fa-instagram" ></i></a>
+                                    </li>
+
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                        <!-- end social media -->
+                    </div>
+                    <!-- start additional links -->
+                    <div class="col-md-2 col-sm-6 col-xs-12 widget border-right border-color-medium-dark-gray padding-45px-left sm-padding-15px-left sm-no-border-right sm-margin-30px-bottom xs-text-center">
+                        <div class="widget-title alt-font text-small text-medium-gray text-uppercase margin-10px-bottom font-weight-600">
+                            Quick Links
+                        </div>
+                        <ul class="list-unstyled">
+                            <li><a class="text-small" href="{% url 'acercade' %}">About us | COMPANY</a></li>
+                            <li><a class="text-small" href="{% url 'portafolio' %}">Our Gallery | PORTFOLIO</a></li>
+                            <li><a class="text-small" href="/blog/0/">Our Blogs | BLOG</a></li>
+                            <li><a class="text-small" href="{% url 'contacto' %}">Speak with us | CONTACT</a></li>
+
+                        </ul>
+                    </div>
+                    <!-- end additional links -->
+                    <!-- start contact information -->
+                    <div class="col-md-3 col-sm-6 col-xs-12 widget border-right border-color-medium-dark-gray padding-45px-left sm-padding-15px-left sm-clear-both sm-no-border-right  xs-margin-30px-bottom xs-text-center">
+                        <div class="widget-title alt-font text-small text-medium-gray text-uppercase margin-10px-bottom font-weight-600">
+                            Contact Information
+                        </div>
+                        <div class="text-extra-medium">Contact: {{ contact.name }} </div>
+                        <div class="text-extra-medium">Address: {{ contact.address }} </div>
+                        <div class="text-extra-medium">Email: {{ contact.email }} </a>
+                        </div>
+                        <div class="text-extra-medium">Phone: {{ contact.phone }}</div>
+                        <div class="text-extra-medium">Phone: 201-519-9759</div>
+                    </div>
+                    <!-- end contact information -->
+                    <!-- start instagram -->
+                    <div class="col-md-4 col-sm-6 col-xs-12 widget padding-45px-left sm-padding-15px-left xs-text-center">
+                        <div class="widget-title alt-font text-small text-medium-gray text-uppercase margin-20px-bottom font-weight-600">
+                            More Information
+                        </div>
+                        <div >
+                            <div>Business Hours: Monday to Saturday from 8 AM to 6 PM</div>
+                            <div>Free Estimates Are Available</div>
+                            <div>We perform installations</div>
+                            <div>We Are Licensed</div>
+                            <div>Residential and Commercial Services</div>
+
+                        </div>
+                    </div>
+                    <!-- end instagram -->
+                </div>
+            </div>
+        </div>
+        <div class="bg-dark-footer padding-50px-tb text-center xs-padding-30px-tb">
+            <div class="container">
+                <div class="row">
+                    <!-- start copyright -->
+                    <div class="col-md-6 col-sm-6 col-xs-12 text-left text-small xs-text-center">&copy; 2018
+                        DWINDOWSDESIGNS is
+                        supported by <a href="http://www.bit-ec.com" target="_blank" class="text-dark-gray">BIT |
+                            Business Intelligence Thinks | GirekStudio</a>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12 text-right text-small xs-text-center">
+                        <div>
+                           This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/">Creative Commons Attribution-NoDerivatives 4.0 International License</a>.
+                           <a rel="license" href="http://creativecommons.org/licenses/by-nd/4.0/">
+                           <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nd/4.0/88x31.png" />
+                        </a>
+                        </div>
+
+                    </div>
+                    <!-- end copyright -->
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+
+<!-- end footer -->
+<!-- start scroll to top -->
+<a class="scroll-top-arrow" href="javascript:void(0);"><i class="ti-arrow-up"></i></a>
+<!-- end scroll to top -->
+<!-- javascript libraries -->
+<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/modernizr.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/skrollr.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/smooth-scroll.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.appear.js' %}"></script>
+<!-- menu navigation -->
+<script type="text/javascript" src="{% static 'js/bootsnav.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/jquery.nav.js' %}"></script>
+<!-- animation -->
+<script type="text/javascript" src="{% static 'js/wow.min.js' %}"></script>
+<!-- page scroll -->
+<script type="text/javascript" src="{% static 'js/page-scroll.js' %}"></script>
+<!-- swiper carousel -->
+<script type="text/javascript" src="{% static 'js/swiper.min.js' %}"></script>
+<!-- counter -->
+<script type="text/javascript" src="{% static 'js/jquery.count-to.js' %}"></script>
+<!-- parallax -->
+<script type="text/javascript" src="{% static 'js/jquery.stellar.js' %}"></script>
+<!-- magnific popup -->
+<script type="text/javascript" src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+<!-- portfolio with shorting tab -->
+<script type="text/javascript" src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+<!-- images loaded -->
+<script type="text/javascript" src="{% static 'js/imagesloaded.pkgd.min.js' %}"></script>
+<!-- pull menu -->
+<script type="text/javascript" src="{% static 'js/classie.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/hamburger-menu.js' %}"></script>
+<!-- counter -->
+<script type="text/javascript" src="{% static 'js/counter.js' %}"></script>
+<!-- fit video -->
+<script type="text/javascript" src="{% static 'js/jquery.fitvids.js' %}"></script>
+<!-- equalize -->
+<script type="text/javascript" src="{% static 'js/equalize.min.js' %}"></script>
+<!-- skill bars -->
+<script type="text/javascript" src="{% static 'js/skill.bars.jquery.js' %}"></script>
+<!-- justified gallery -->
+<script type="text/javascript" src="{% static 'js/justified-gallery.min.js' %}"></script>
+<!-- pie chart -->
+<script type="text/javascript" src="{% static 'js/jquery.easypiechart.min.js' %}"></script>
+<!-- instagram -->
+<script type="text/javascript" src="{% static 'js/instafeed.min.js' %}"></script>
+<!-- retina -->
+<script type="text/javascript" src="{% static 'js/retina.min.js' %}"></script>
+<!-- revolution -->
+<script type="text/javascript" src="{% static 'revolution/js/jquery.themepunch.tools.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'revolution/js/jquery.themepunch.revolution.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+
+<div id="google_translate_element"></div>
+<script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'es',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+        }, 'google_translate_element');
+    }
+
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

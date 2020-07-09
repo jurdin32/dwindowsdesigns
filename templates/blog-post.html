@@ -1,0 +1,82 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <!-- start page title section -->
+{% for blogs in blog %}
+    <section class="wow fadeIn bg-extra-dark-gray padding-35px-tb page-title-small top-space">
+        <div class="container">
+            <div class="row equalize xs-equalize-auto">
+                <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
+                    <div class="display-table-cell vertical-align-middle text-left xs-text-center">
+                        <h1 class="alt-font text-white font-weight-600 no-margin-bottom text-uppercase">detail of the
+                            blog</h1>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 display-table text-right xs-text-left xs-margin-10px-top">
+                    <div class="display-table-cell vertical-align-middle breadcrumb text-small alt-font">
+
+                        <ul class="xs-text-center text-uppercase">
+                            <li><a class="text-dark-gray">{{ blogs.date|date:'d/M/Y' }}</a></li>
+                            <li><span class="text-dark-gray">by <a >{{ blogs.author }}</a></span>
+                            </li>
+                            <li class="text-dark-gray"><a >{{ blogs.category.category }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <main class="col-md-9 col-sm-12 col-xs-12 right-sidebar sm-margin-60px-bottom xs-margin-40px-bottom no-padding-left sm-no-padding-right">
+                        <div class="col-md-12 col-sm-12 col-xs-12 blog-details-text last-paragraph-no-margin">
+                            <strong><p>{{ blogs.title }}</p></strong><br>
+                            <img src="/media/{{ blogs.image }}" alt="" class="width-100 margin-45px-bottom">
+                            <p>{{ blogs.article }}</p>
+                        </div>
+                    </main>
+                    <aside class="col-md-3 col-sm-12 col-xs-12 pull-right">
+                        <div class="display-inline-block width-100 margin-45px-bottom xs-margin-25px-bottom">
+                            <form>
+                                <div class="position-relative">
+                                    <input type="text" class="bg-transparent text-small no-margin border-color-extra-light-gray medium-input pull-left" placeholder="Enter your keywords...">
+                                    <button type="submit" class="bg-transparent  btn position-absolute right-0 top-1"><i class="fas fa-search no-margin-left"></i></button>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <div class="margin-45px-bottom xs-margin-25px-bottom">
+                            <div class="text-extra-dark-gray margin-25px-bottom alt-font text-uppercase font-weight-600 text-small aside-title"><span>Popular post</span></div>
+                            <ul class="latest-post position-relative">
+                                {% for foo in blog_list %}
+                                    <li>
+                                    <figure>
+                                        <a href="/blog/0/"><img src="/media/{{ foo.image }}" alt=""></a>
+                                    </figure>
+                                    <div class="display-table-cell vertical-align-top text-small"><a href="/blog/0/" class="text-extra-dark-gray"><span class="display-inline-block margin-5px-bottom">{{ foo.title }}</span></a> <span class="clearfix text-medium-gray text-small">{{ foo.date }}</span></div>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+
+                        <div class="margin-45px-bottom xs-margin-25px-bottom">
+                            <div class="text-extra-dark-gray margin-25px-bottom alt-font text-uppercase font-weight-600 text-small aside-title"><span>Instagram</span></div>
+                            <div class="instagram-follow-api">
+                                <ul id="instaFeed-aside"></ul>
+                            </div>
+                        </div>
+                        <div class="margin-45px-bottom xs-margin-25px-bottom">
+                            <a href="#"><img src="images/menu-banner-01.png" alt="" class="width-100"/></a>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+        <!-- end blog content section -->
+{% endblock %}

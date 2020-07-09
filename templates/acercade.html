@@ -1,0 +1,118 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+    <!-- start page title section -->
+    <section class="wow fadeIn bg-extra-dark-gray padding-35px-tb page-title-small top-space">
+        <div class="container">
+            <div class="row equalize">
+                <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 display-table">
+                    <div class="display-table-cell vertical-align-middle text-left xs-text-center">
+                        <!-- start page title -->
+                        <h1 class="alt-font text-white font-weight-600 no-margin-bottom text-uppercase">ABOUT THE COMPANY</h1>
+                        <!-- end page title -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end page title section -->
+    <!-- start story section -->
+    <section class="wow fadeIn animated animated">
+        <div class="container">
+                <div class="row equalize sm-equalize-auto">
+
+                    <div class="col-md-6 col-sm-12 col-xs-12 text-center sm-margin-30px-bottom wow fadeInLeft">
+                        <div class="display-table width-150 height-150">
+                            <div class="display-table-cell vertical-align-middle width-200 height-200">
+                                <img src="/media/{{ company.image_1 }}" class="border-radius-5">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12 col-xs-12 wow fadeInRight" data-wow-delay="0.2s">
+                        <div class="display-table width-100 height-100">
+                            <div class="display-table-cell vertical-align-middle padding-twelve-lr sm-text-center sm-no-padding width-100">
+
+                                <h6 style="text-align: center"
+                                    class="alt-font text-extra-dark-gray">{{ company.title_about }}</h6>
+                                <p style="text-align: justify">{{ company.paragraph_about }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <!-- start feature box -->
+        </div>
+    </section>
+    <!-- end story section -->
+
+    <!-- start section -->
+    <section class="wow fadeIn last-paragraph-no-margin">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12 text-center center-col margin-70px-bottom sm-margin-40px-bottom xs-margin-30px-bottom">
+                    <span class="alt-font text-deep-yellow text-extra-large margin-5px-bottom display-block">Dwindowsdesigns</span>
+{#                    <h6 class="font-weight-400 text-extra-dark-gray alt-font">-</h6>#}
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-xs-12 no-padding margin-eight-bottom sm-margin-30px-bottom">
+                        <div class="col-md-6 col-sm-8 col-xs-12 xs-margin-15px-bottom wow fadeInLeft"
+                             data-wow-delay="0.2s">
+                            <img src="/media/{{ company.image_2 }}" alt="" class="border-radius-5">
+                        </div>
+                        <div class="col-md-6 col-sm-4 col-xs-12 wow fadeInRight" data-wow-delay="0.4s">
+                            <img src="/media/{{ company.image_3 }}" alt="" class="border-radius-5 ">
+                        </div>
+                    </div>
+                </div>
+                <div class="row equalize sm-equalize-auto">
+
+                    <div class="col-md-4 display-table">
+                        <div class="display-table-cell vertical-align-middle">
+
+
+                            <strong style="text-align: center"
+                                    class="alt-font text-deep-yellow text-medium margin-5px-bottom display-block"><img style="text-align: center" src="/static/images/Screenshot_1.png"></strong>
+                            <strong style="text-align: center"
+                                    class="alt-font text-deep-yellow text-medium margin-5px-bottom display-block">{{ company.title_1 }}</strong>
+                            <p style="text-align: center">{{ company.objetive }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 display-table">
+                        <div class="display-table-cell vertical-align-middle">
+                            <strong style="text-align: center"
+                                    class="alt-font text-deep-yellow text-medium margin-5px-bottom display-block"><img style="text-align: center" src="/static/images/Screenshot_1.png"></strong>
+                            <strong style="text-align: center"
+                                    class="alt-font text-deep-yellow text-medium margin-5px-bottom display-block">{{ company.title_2 }}</strong>
+                            <p style="text-align: center">{{ company.mission }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 display-table">
+                        <div class="display-table-cell vertical-align-middle">
+                            <strong style="text-align: center"
+                                    class="alt-font text-deep-yellow text-medium margin-5px-bottom display-block"><img style="text-align: center" src="/static/images/Screenshot_1.png"></strong>
+                            <strong style="text-align: center"
+                                    class="alt-font text-deep-yellow text-medium margin-5px-bottom display-block">{{ company.title_3 }}</strong>
+                            <p style="text-align: center">{{ company.view }}</p>
+                        </div>
+                    </div>
+                </div>
+
+
+        </div>
+    </section>
+{#    <!-- end section -->#}
+{#    <!-- start slider section  -->#}
+{#    <h6 style="text-align: center" class="font-weight-400 text-extra-dark-gray alt-font">Brands with which we work Customers</h6>#}
+{#    <section id="clients" class="parallax wow fadeIn" data-stellar-background-ratio="0.4"#}
+{#             style="background-image: url('/static/images/paradax.png'); visibility: visible; animation-name: fadeIn;">#}
+{#        <div class="opacity-medium bg-extra-dark"></div>#}
+{#        <div class="container text-center">#}
+{#            {% for proveedore in proveedores %}#}
+{#                <div class="col-md-2 col-sm-6 text-center wow fadeInRight" data-wow-delay="1s"><a#}
+{#                        href="/media/{{ proveedore.url }}" target="_blank"><img src="/media/{{ proveedore.logo }}"#}
+{#                                                                                alt=""/></a></div>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    </section>#}
+{#    <!-- end slider section -->#}
+{% endblock %}
