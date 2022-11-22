@@ -5,7 +5,7 @@ django-jet==1.0.7
 googletrans==2.3.0
 idna==2.7
 jet==1.0
-Pillow==5.2.0
+Pillow==9.3.0
 psycopg2==2.7.5
 pytz==2018.5
 requests==2.19.1
